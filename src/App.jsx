@@ -107,7 +107,7 @@ const fltertask = (e) => {
           .filter((ele) => {
             if (filterDate !== "") {
               console.log(dateFilterItem);
-              return dateFilterItem;
+               return ele.date === filterDate
             } else {
               return ele;
             }
@@ -120,6 +120,7 @@ const fltertask = (e) => {
             }
           })
           .map((ele, i) => {
+            {console.log(ele)}
             return (
               <div>
                 <span>{ele.date}</span>
