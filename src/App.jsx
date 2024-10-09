@@ -62,10 +62,14 @@ const fltertask = (e) => {
   setPriorityFilter(e.target.value);
  
 };
- console.log(priorityFilter);
+//  console.log(priorityFilter);
   return (
     <div className="main">
-      <select name="sortPriority" id="" onChange={(e)=>setPriorityFilter(e.target.value)}>
+      <select
+        name="sortPriority"
+        id=""
+        onChange={(e) => setPriorityFilter(e.target.value)}
+      >
         <option value="">select</option>
         {priority.map((ele, i) => {
           return (
@@ -75,10 +79,14 @@ const fltertask = (e) => {
           );
         })}
       </select>
-      <select name="filterDate" onChange={(e)=>setfilterDate(e.target.value)}>
+      <select name="filterDate" onChange={(e) => setfilterDate(e.target.value)}>
         <option value="">select</option>
-        {mainTask.map((ele,i)=>{
-          return <option value={ele.date} key={i}>{ele.date}</option>
+        {mainTask.map((ele, i) => {
+          return (
+            <option value={ele.date} key={i}>
+              {ele.date}
+            </option>
+          );
         })}
       </select>
 
@@ -97,21 +105,18 @@ const fltertask = (e) => {
       <div className="taks">
         {mainTask
           .filter((ele) => {
-            if (ele.priority === priorityFilter) {
-              {
-                console.log(ele);
-              }
-              return ele;
-              
+            if (filterDate !== "") {
+              console.log(dateFilterItem);
+              return dateFilterItem;
             } else {
               return ele;
             }
-          }).filter((ele)=>{
-            if(ele.date === dateFilterItem){
-              {console.log(ele)}
-              return ele
-            }else{
-              return ele
+          })
+          .filter((ele) => {
+            if (priorityFilter !== "") {
+              return ele.priority.includes(priorityFilter);
+            } else {
+              return ele;
             }
           })
           .map((ele, i) => {
